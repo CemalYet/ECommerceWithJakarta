@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: cemalsmac
+  Date: 20/04/2021
+  Time: 00:55
+-->
+<!DOCTYPE html>
+
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+    <title>Title</title>
+    <h:outputStylesheet name="css/primeflex.css"/>
+</h:head>
+
+<h:body>
+    <div class="p-col-12 p-md-4">
+        <p:staticMessage severity="info" summary="INFO" detail="USER ID #{loginController.session.idUser}"
+                         style="width: 100%"/>
+        <p:commandLink  type="button"
+                        value="logout"
+                        icon="pi pi-shopping-cart"
+                        style="float: right"
+                        action="#{loginController.logout}"
+
+        />
+    </div>
+    <div class="card">
+        <h:form id="form">
+
+            <p:dataView id="productList" var="product" value="#{productController.products}" rows="12" paginator="true"
+                        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                        gridIcon="pi pi-th-large" listIcon="pi pi-bars"
+                        layout="grid" gridRowStyleClass="p-lg-6 p-xl-4"
+            >
+                <p:dataViewGridItem >
+                    <p:card >
+                        <div>
+                            <i class="pi pi-tag product-category-icon"/>
+                            <span>${product.category}</span>
+                            <p:staticMessage severity="info" summary="In Stock" style="width: 20%; float: right; margin-top: 0"/>
+                        </div>
+                        <p:spacer> </p:spacer>
+                        <div style="text-align: center;font-size: large" >
+                            <img src="resources/images/pinkpurse.jpg.jpeg"/>
+                            <div><b>${product.name}</b></div>
+                            <div><em>${product.description}</em></div>
+                        </div>
+                        <p> </p>
+                        <p:rating style="text-align: center" value="#{product.star}" readonly="true"/>
+                        <p> </p>
+                        <div>
+                            <h:outputText value="#{product.price}" style="font-size: x-large;font-weight: bold">
+                            </h:outputText>
+                            <p:linkButton value="View" style="float: right" outcome="productDetail" icon="pi pi-eye">
+                                <f:param name="productId" value="#{product.idProduct}"/>
+                            </p:linkButton>
+                        </div>
+                    </p:card>
+                </p:dataViewGridItem>
+
+            </p:dataView>
+
+        </h:form>
+
+    </div>
+</h:body>
+</html>

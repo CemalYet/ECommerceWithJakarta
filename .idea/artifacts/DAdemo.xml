@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="DAdemo">
+    <output-path>$PROJECT_DIR$/out/artifacts/DAdemo</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="a20da21/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="archive" name="'DAdemo' JPA descriptors.jar">
+            <element id="jpa-descriptors" facet="a20da21/jpa/JPA" />
+          </element>
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:jakarta:10.0.0" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="module-output" name="a20da21" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="a20da21/ejb/EJB" />
+      <element id="artifact" artifact-name="DAdemo:ejb exploded" />
+    </root>
+  </artifact>
+</component>

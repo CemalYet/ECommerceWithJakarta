@@ -1,0 +1,66 @@
+package ejb;
+
+import entities.ProductEntity;
+import jakarta.annotation.PostConstruct;
+import jakarta.ejb.Remove;
+import jakarta.ejb.Stateful;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Stateful
+public class ShoppingCartBean {
+    private List<ProductEntity> shoppingCart;
+
+    @PostConstruct
+    public void init() {
+        shoppingCart = new ArrayList<>();
+    }
+
+    public boolean addProduct(ProductEntity product) {
+        if (!shoppingCart.contains(product)) {
+            shoppingCart.add(product);
+            return true;
+        }
+        return false;
+    }
+
+    public List<ProductEntity> removeProduct(ProductEntity product) {
+        shoppingCart.remove(product);
+        return shoppingCart;
+    }
+
+    public Integer getCartSize() {
+        if (shoppingCart == null || shoppingCart.isEmpty()) {
+            return 0;
+        }
+        return shoppingCart.size();
+    }
+
+    public Double getTotal() {
+        if (shoppingCart == null || shoppingCart.isEmpty()) {
+            return 0.0;
+        }
+        double total = 0.0;
+        for (ProductEntity product : shoppingCart
+        ) {
+            total += product.getPrice()*product.getOrderQuantity();
+        }
+        return total;
+    }
+
+    public void empty() {
+        if (shoppingCart != null)
+            shoppingCart.clear();
+    }
+
+    @Remove
+    public void checkout() {
+        shoppingCart.clear();
+    }
+
+
+    public List<ProductEntity> getShoppingCart() {
+        return shoppingCart;
+    }
+}

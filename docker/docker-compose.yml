@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mysql:
+    image: 'mysql:8'
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_HOST=mysql.studev.groept.be
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=a20da21
+      - MYSQL_USER=a20da21
+      - MYSQL_PASSWORD=xpq50fweqg
+
+
+
+
