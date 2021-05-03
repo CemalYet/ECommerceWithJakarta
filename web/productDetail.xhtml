@@ -16,20 +16,14 @@
         <h:outputStylesheet name="css/primeflex.css"/>
     </h:head>
     <h:body>
-        <div class="card">
-            <p class="p-m-0">You've been redirected to this bookmarkable page with button.
-                ViewParameter you've passed is <strong>"${productController.product.idProduct}"</strong>
-            </p>
-        </div>
         <div class="p-grid">
             <div class="p-col-12 p-md-6 p-col">
-                <p:card >
+                <p:card>
 
                     <div>
                         <i class="pi pi-tag product-category-icon"/>
                         <span>${productController.product.category}</span>
-                        <p:staticMessage severity="info" summary="In Stock"
-                                         style="width: 20%; float: right; margin-top: 0"/>
+                        <p:staticMessage severity="info" summary="In Stock" style="width: 20%; float: right; margin-top: 0"/>
                     </div>
                     <p:spacer> </p:spacer>
                     <div style="text-align: center;font-size: large">
@@ -64,9 +58,12 @@
                     <p> </p>
                 </p:card>
                 <div>
-
                     <c:if test="#{productController.product.commentSize == 0}">
-                        <p:staticMessage severity="warn" summary="There is no comment yet about this product :(" style=" margin-top:3%;text-align: center"/>
+                        <div class="p-text-center" style="font-size: x-large">
+                            <b>
+                                <br>There is not any comment yet about this product :( </br>
+                            </b>
+                        </div>
                     </c:if>
                     <p:accordionPanel id="comments" var="comment" value="#{productController.product.comments}">
                         <p:tab title="#{comment.user.name}">
@@ -79,7 +76,7 @@
             <div class="p-col">
                 <p:card id="cart">
                     <f:facet name="title">Your Shopping Cart</f:facet>
-                    <p:dataTable   var="cart" value="#{shoppingCartController.cart}" >
+                    <p:dataTable var="cart" value="#{shoppingCartController.cart}">
                         <p:column headerText="Name">
                             <h:outputText value="#{cart.name}"/>
                         </p:column>
