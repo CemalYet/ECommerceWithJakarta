@@ -13,9 +13,9 @@ public class ProductPhotoEntity {
     @Column(name="id_photo")
     private int idPhoto;
 
-    @Lob
+
     @Column(name="photoPath")
-    private byte[] photo;
+    private String photo;
 
     @Column(name="photoOrder",nullable = false)
     private Byte photoOrder;
@@ -24,7 +24,7 @@ public class ProductPhotoEntity {
         this.idPhoto = idPhoto;
     }
 
-    public void setPhoto(byte[] photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
@@ -36,7 +36,7 @@ public class ProductPhotoEntity {
         return idPhoto;
     }
 
-    public byte[] getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
@@ -49,13 +49,11 @@ public class ProductPhotoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductPhotoEntity that = (ProductPhotoEntity) o;
-        return idPhoto == that.idPhoto && photoOrder == that.photoOrder && Arrays.equals(photo, that.photo);
+        return idPhoto == that.idPhoto && photo.equals(that.photo) && photoOrder.equals(that.photoOrder);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(idPhoto, photoOrder);
-        result = 31 * result + Arrays.hashCode(photo);
-        return result;
+        return Objects.hash(idPhoto, photo, photoOrder);
     }
 }
