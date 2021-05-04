@@ -41,13 +41,6 @@ public class MyHelloServlet extends HttpServlet {
        // dataServices.createProduct("Bamboo Watch",237.67,"secondhand",12,Accessories,VERY_GOOD);
 
         request.getParameter("id");
-        for (ProductPhotoEntity image:dataServicesBean.findByProductId(1).getProductPhotos()
-             ) {
-            response.reset();
-            ServletOutputStream outputStream= response.getOutputStream();
-            outputStream.write(image.getPhoto());
-        }
-
 
         writer.println("<ul>");
         for (CommentEntity comment: dataServicesBean.findUserById(1).getComments()

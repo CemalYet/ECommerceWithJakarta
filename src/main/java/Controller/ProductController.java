@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,13 +27,14 @@ public class ProductController implements Serializable {
     private List<ProductEntity> products;
     private ProductEntity product;
     private List<ProductEntity> cart;
-
+    private ArrayList<String> images = new ArrayList<>();
 
     public ProductController () {
     }
 
     @PostConstruct
     public void initialize() {
+
         this.product = new ProductEntity();
         products = dataServicesBean.findAllProduct();
 
@@ -54,16 +56,18 @@ public class ProductController implements Serializable {
         product = dataServicesBean.findByProductId(product.getIdProduct());
     }
 
-    public void findProductImage() throws IOException {
-        product = dataServicesBean.findByProductId(product.getIdProduct());
-        byte[] image =product.getProductPhotos().get(0).getPhoto();
-        FacesContext context = FacesContext.getCurrentInstance();
-        HttpServletResponse response=(HttpServletResponse) context.getExternalContext().getResponse();
-        response.reset();
-        response.setContentType("image/jpeg");
-        ServletOutputStream outputStream= response.getOutputStream();
-        outputStream.write(image);
+    public ArrayList<String> findProductImage() {
 
+        return images;
     }
 
+    public ArrayList<String> getImages() {
+        product = dataServicesBean.findByProductId(product.getIdProduct());
+        for (ProductPhotoEntity image: product.getProductPhotos()
+        ) {
+            images.add(image.getPhoto());
+
+        }
+        return images;
+    }
 }
