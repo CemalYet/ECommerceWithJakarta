@@ -19,7 +19,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="DAdemoPU" value="cb936c79-dc99-4bd5-8a9b-6914a5dd6c80" />
+          <factory-entry name="DAdemoPU" value="83342c5b-b45a-4eb4-8e4f-c0002dc07689" />
           <factory-entry name="default" value="359c11ba-6b2a-4c78-a108-7c7a1df15a6b" />
         </datasource-mapping>
         <naming-strategy-map />
@@ -58,5 +58,12 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.7.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.faces:jakarta.faces-api:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.primefaces:primefaces:jakarta:10.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.soteria:jakarta.security.enterprise:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.security.enterprise:jakarta.security.enterprise-api:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.ejb:jakarta.ejb-api:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.transaction:jakarta.transaction-api:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.activation:jakarta.activation:2.0.0" level="project" />
   </component>
 </module>

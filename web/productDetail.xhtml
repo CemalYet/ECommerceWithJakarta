@@ -27,7 +27,15 @@
                     </div>
                     <p:spacer> </p:spacer>
                     <div style="text-align: center;font-size: large">
-                        <img src="resources/images/pinkpurse.jpg.jpeg" alt=""/>
+<!--                        <h:graphicImage value="#{productController.product.productPhotos.get(1).photo}"/>-->
+<!--                        <p:carousel value="#{productController.images}" var="image" responsive="true"><h:graphicImage value="#{image}"/></p:carousel>-->
+<!--                        <h:graphicImage value="#{productController.images.get(0)}"/>-->
+<!--                        <img src="resources/images/pinkpurse.jpg.jpeg" alt=""/>-->
+                        <div class="card">
+                            <p:galleria value="#{productController.images}" var="image" panelWidth="500" panelHeight="313" showCaption="false">
+                                <img src="#{image}" alt=""/>
+                            </p:galleria>
+                        </div>
                         <div><b>${productController.product.name}</b></div>
                         <div><em>${productController.product.description}</em></div>
                     </div>

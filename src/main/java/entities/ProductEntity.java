@@ -38,11 +38,11 @@ public class ProductEntity {
     @Column(name="category",nullable = false)
     private CategoryEnum category;
 
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval=true)
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval=true)
     @JoinColumn
     private List<ProductPhotoEntity> productPhotos;
 
-    @OneToMany (mappedBy = "product",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<CommentEntity> comments;
     @Transient
     private int orderQuantity;
