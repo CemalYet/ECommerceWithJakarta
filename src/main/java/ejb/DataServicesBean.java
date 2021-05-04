@@ -2,10 +2,13 @@ package ejb;
 
 import entities.*;
 import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import jakarta.transaction.Transactional;
 
+import javax.crypto.SecretKeyFactory;
 import java.util.List;
 
 
@@ -15,6 +18,9 @@ public class DataServicesBean {
 
     @PersistenceContext(unitName = "DAdemoPU")
     EntityManager em;
+   /* @Inject
+    Pbkdf2PasswordHash passwordHash;*/
+
 
     public DataServicesBean() {
     }
@@ -25,7 +31,7 @@ public class DataServicesBean {
                                  String city, int zipcode) {
 
         //passwordHashInitialize();
-        UserEntity newUser = new UserEntity(name, surname, email, password);
+        UserEntity newUser = new UserEntity(name, surname, email,password);
         AdressEntity newAddress = new AdressEntity(street, city, zipcode);
         newUser.setAddress(newAddress);
         em.persist(newAddress);
@@ -78,6 +84,8 @@ public class DataServicesBean {
     public UserEntity findUserById(int id) {
         return em.find(UserEntity.class, id);
     }
+
+
 
 
 }

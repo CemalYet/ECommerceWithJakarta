@@ -6,15 +6,15 @@ import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 
 
-import static entities.CategoryEnum.Accessories;
 
+@ApplicationScoped
 public class DataInitializer {
 
     @Inject
     DataServicesBean dataServicesBean;
 
     public void execute(@Observes @Initialized(ApplicationScoped.class) Object event){
-           /* dataServicesBean.createUser("cemal", "cemal@cemal",
+          /*  dataServicesBean.createUser("cemal", "cemal@cemal",
                     "ali", "veli","kesseldellaan","leuven",32);
 
              dataServicesBean.createUser("Tom Matthews", "tmatthews",
