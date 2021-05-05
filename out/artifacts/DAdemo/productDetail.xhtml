@@ -32,8 +32,8 @@
 <!--                        <h:graphicImage value="#{productController.images.get(0)}"/>-->
 <!--                        <img src="resources/images/pinkpurse.jpg.jpeg" alt=""/>-->
                         <div class="card">
-                            <p:galleria value="#{productController.images}" var="image" panelWidth="500" panelHeight="313" showCaption="false">
-                                <img src="#{image}" alt=""/>
+                            <p:galleria value="#{productController.product.productPhotos}" var="image" panelWidth="500" panelHeight="313" showCaption="false">
+                                <img src="#{image.photo}" alt=""/>
                             </p:galleria>
                         </div>
                         <div><b>${productController.product.name}</b></div>
