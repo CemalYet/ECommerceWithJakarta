@@ -33,7 +33,7 @@ public class AuthenticationFilter implements Filter {
         boolean loginRequest = req.getRequestURI().equals(loginUri);
         boolean resourceRequest = req.getRequestURI().startsWith(req.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER);
 
-        if (loggedIn || loginRequest || resourceRequest ) {
+        if (loggedIn || loginRequest || resourceRequest) {
             chain.doFilter(request, response);
         }else{
             this.context.log("Unauthorized access request");

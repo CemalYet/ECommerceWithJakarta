@@ -48,14 +48,10 @@ public class DataServicesBean {
         return newProduct;
     }
 
-    @Transactional
-    public CommentEntity createComment() {
-
-        UserEntity newUser = findUserById(2);
-        ProductEntity newProduct = findByProductId(4);
-        CommentEntity newComment = new CommentEntity("This product is amazing", 3);
-        newComment.setProduct(newProduct);
-        newComment.setUser(newUser);
+    public CommentEntity createComment(int userId,int productId,int star,String comment) {
+        CommentEntity newComment = new CommentEntity(comment, star);
+        newComment.setProduct(findByProductId(productId));
+        newComment.setUser(findUserById(userId));
         em.persist(newComment);
         return newComment;
     }
@@ -83,6 +79,12 @@ public class DataServicesBean {
 
     public UserEntity findUserById(int id) {
         return em.find(UserEntity.class, id);
+    }
+
+    public List<CommentEntity> getUserComment(int productId){
+        return em.createNamedQuery("findProductComments",CommentEntity.class)
+                .setParameter("productId",productId)
+                .getResultList();
     }
 
 

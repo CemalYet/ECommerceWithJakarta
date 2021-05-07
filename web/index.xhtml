@@ -21,8 +21,8 @@
 
 <h:body>
     <div class="p-col-12 p-md-4">
-        <p:staticMessage severity="info" summary="INFO" detail="USER ID #{loginController.session.idUser}"
-                         style="width: 100%"/>
+       <!-- <p:staticMessage severity="info" summary="INFO" detail="USER ID #{loginController.session.idUser}"
+                         style="width: 100%"/>-->
         <p:commandLink  type="button"
                         value="logout"
                         icon="pi pi-shopping-cart"
@@ -50,7 +50,7 @@
                         <p:spacer> </p:spacer>
                         <p:spacer> </p:spacer>
                         <div style="text-align: center;font-size: large" >
-                            <img src="#{product.productPhotos.get(0).photo}"/>
+                            <img src="#{product.productPhotos.get(0).photo}" alt=""/>
                             <div><b>${product.name}</b></div>
                             <div><em>${product.description}</em></div>
                         </div>
@@ -58,7 +58,7 @@
                         <p:rating style="text-align: center" value="#{product.star}" readonly="true"/>
                         <p> </p>
                         <div>
-                            <h:outputText value="#{product.price}" style="font-size: x-large;font-weight: bold">
+                            <h:outputText value="£ #{product.price}" style="font-size: x-large;font-weight: bold">
                             </h:outputText>
                             <p:linkButton value="View" style="float: right" outcome="productDetail" icon="pi pi-eye">
                                 <f:param name="productId" value="#{product.idProduct}"/>

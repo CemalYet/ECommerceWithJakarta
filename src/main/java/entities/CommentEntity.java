@@ -1,11 +1,12 @@
 package entities;
 
 import jakarta.persistence.*;
-import java.util.Objects;
+
 
 @Entity
 @Table(name="comment")
-
+@NamedQuery(name = "findProductComments",
+        query = "SELECT c from CommentEntity c where c.product.idProduct=:productId ")
  public class CommentEntity  {
 
     @Id

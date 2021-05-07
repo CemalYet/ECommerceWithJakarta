@@ -9,6 +9,7 @@ import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.primefaces.PrimeFaces;
 
 import java.io.Serializable;
 import java.util.List;
@@ -29,11 +30,12 @@ public class ShoppingCartController implements Serializable {
     public void addCart(ProductEntity product) {
         if (!cartBean.addProduct(product)){
             FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "The product is already in the list", "Product adding error"));
+                    "War", "The product is already in the list"));
         }else{
             FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,
-                    "The product is added in the list", "Product adding error"));
+                    "Info", "The product is added in the list"));
         }
+        PrimeFaces.current().ajax().update("messages");
 
     }
 
