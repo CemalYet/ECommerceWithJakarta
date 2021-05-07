@@ -32,7 +32,7 @@
 <!--                        <h:graphicImage value="#{productController.images.get(0)}"/>-->
 <!--                        <img src="resources/images/pinkpurse.jpg.jpeg" alt=""/>-->
                         <div class="card">
-                            <p:galleria value="#{productController.product.productPhotos}" var="image" panelWidth="500" panelHeight="313" showCaption="false">
+                            <p:galleria value="#{productController.images}" var="image" panelWidth="500" panelHeight="313" showCaption="false">
                                 <img src="#{image.photo}" alt=""/>
                             </p:galleria>
                         </div>
@@ -47,6 +47,9 @@
                                       style="font-size: x-large;font-weight: bold">
                         </h:outputText>
                         <h:form>
+                            <p:messages id="messages" showDetail="true" closable="true">
+                                <p:autoUpdate/>
+                            </p:messages>
                             <div style="text-align: center">
                                 <p:outputLabel for="@next"/>
                                 <p:spinner id="minMax" value="#{productController.product.orderQuantity}" min="1"

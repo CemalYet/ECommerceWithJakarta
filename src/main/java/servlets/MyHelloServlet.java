@@ -1,10 +1,8 @@
 package servlets;
 
 import ejb.DataServicesBean;
-import ejb.MySessionBean;
 import ejb.ShoppingCartBean;
 import entities.*;
-import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -18,7 +16,7 @@ public class MyHelloServlet extends HttpServlet {
     @Inject
     DataServicesBean dataServicesBean;
     @Inject
-    ShoppingCartBean shoppingcart;
+    ShoppingCartBean shoppingCart;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,7 +49,7 @@ public class MyHelloServlet extends HttpServlet {
         ) {
             writer.println("<li>"+comment.getComment()+"</li>");
         }
-        for (ProductEntity product: shoppingcart.getShoppingCart()
+        for (ProductEntity product: shoppingCart.getShoppingCart()
         ) {
             writer.println("<li>"+product.getName()+"</li>");
         }

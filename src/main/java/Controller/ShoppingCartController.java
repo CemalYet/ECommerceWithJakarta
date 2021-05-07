@@ -27,9 +27,12 @@ public class ShoppingCartController implements Serializable {
         cart=cartBean.getShoppingCart();
     }
     public void addCart(ProductEntity product) {
-        if (cartBean.addProduct(product)){
-            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,
+        if (!cartBean.addProduct(product)){
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,
                     "The product is already in the list", "Product adding error"));
+        }else{
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,
+                    "The product is added in the list", "Product adding error"));
         }
 
     }

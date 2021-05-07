@@ -26,10 +26,9 @@ public class ProductController implements Serializable {
     private DataServicesBean dataServicesBean;
     private List<ProductEntity> products;
     private ProductEntity product;
-    private List<ProductEntity> cart;
-    private ArrayList<String> images = new ArrayList<>();
+    private List<ProductPhotoEntity> images;
 
-    public ProductController () {
+    public ProductController() {
     }
 
     @PostConstruct
@@ -48,26 +47,12 @@ public class ProductController implements Serializable {
         return product;
     }
 
-    public List<ProductEntity> getCart() {
-        return cart;
-    }
-
     public void doFindProductById() {
         product = dataServicesBean.findByProductId(product.getIdProduct());
     }
 
-    public ArrayList<String> findProductImage() {
 
-        return images;
-    }
-
-    public ArrayList<String> getImages() {
-        product = dataServicesBean.findByProductId(product.getIdProduct());
-        for (ProductPhotoEntity image: product.getProductPhotos()
-        ) {
-            images.add(image.getPhoto());
-
-        }
-        return images;
+    public List<ProductPhotoEntity> getImages() {
+        return product.getProductPhotos();
     }
 }

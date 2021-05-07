@@ -31,13 +31,13 @@
 
     <filter-mapping>
         <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
-        <url-pattern>/hello/*</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
-        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/productDetail.xhtml/*</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
-        <url-pattern>/hello/*</url-pattern>
+        <url-pattern>/productDetail.xhtml/*</url-pattern>
     </filter-mapping>
 
     <welcome-file-list>

@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Enumeration;
 
-@WebFilter("/RequestLoggingFilter")
+@WebFilter("/index/RequestLoggingFilter")
 public class RequestLoggingFilter implements Filter {
     private ServletContext context;
     public void init(FilterConfig config) throws ServletException {

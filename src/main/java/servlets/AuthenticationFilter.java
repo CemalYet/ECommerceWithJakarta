@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(value ="/AuthenticationFilterFilter")
+@WebFilter(value ="/index/AuthenticationFilterFilter")
 public class AuthenticationFilter implements Filter {
     private ServletContext context;
     public void init(FilterConfig config) throws ServletException {
@@ -25,12 +25,15 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse res =(HttpServletResponse)response;
         HttpSession session = req.getSession(false);
         String loginUri =req.getContextPath()+"/login.xhtml";
+        String indexUri=req.getContextPath()+"/index.xhtml";
+
         this.context.log("Requested Resource::"+loginUri);
         boolean loggedIn = (session != null) && (session.getAttribute("user") != null);
+        boolean indexRequest=req.getRequestURI().equals(indexUri);
         boolean loginRequest = req.getRequestURI().equals(loginUri);
         boolean resourceRequest = req.getRequestURI().startsWith(req.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER);
 
-        if (loggedIn || loginRequest || resourceRequest) {
+        if (loggedIn || loginRequest || resourceRequest ) {
             chain.doFilter(request, response);
         }else{
             this.context.log("Unauthorized access request");
