@@ -1,12 +1,11 @@
 package Controller;
 
 
-import ejb.CommentBean;
+import ejb.GetHits;
 import ejb.DataServicesBean;
 import entities.CommentEntity;
 import entities.ProductEntity;
 import entities.ProductPhotoEntity;
-import entities.UserEntity;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.faces.application.FacesMessage;
@@ -14,13 +13,9 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.servlet.ServletOutputStream;
-import jakarta.servlet.http.HttpServletResponse;
 import org.primefaces.PrimeFaces;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,7 +31,7 @@ public class ProductController implements Serializable {
     private CommentEntity comment;
     private List<CommentEntity> comments;
     @EJB
-    private CommentBean commentBean;
+    private GetHits getHits;
 
     public ProductController() {
     }

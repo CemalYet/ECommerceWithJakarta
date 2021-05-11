@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.NotFoundException;
 
 import javax.crypto.SecretKeyFactory;
 import java.util.List;
@@ -18,19 +19,21 @@ public class DataServicesBean {
 
     @PersistenceContext(unitName = "DAdemoPU")
     EntityManager em;
-   /* @Inject
-    Pbkdf2PasswordHash passwordHash;*/
-
 
     public DataServicesBean() {
     }
 
+    public void createProduct(ProductEntity product){
+        product = new ProductEntity();
+        em.persist(product);
+    }
+
+
 
     @Transactional
-    public UserEntity createUser(String name, String email, String password, String surname, String street,
+    public UserEntity createUserByFields(String name, String email, String password, String surname, String street,
                                  String city, int zipcode) {
 
-        //passwordHashInitialize();
         UserEntity newUser = new UserEntity(name, surname, email,password);
         AdressEntity newAddress = new AdressEntity(street, city, zipcode);
         newUser.setAddress(newAddress);
@@ -85,6 +88,13 @@ public class DataServicesBean {
         return em.createNamedQuery("findProductComments",CommentEntity.class)
                 .setParameter("productId",productId)
                 .getResultList();
+    }
+
+    public void deleteProductId(int productId){
+        ProductEntity product=findByProductId(productId);
+        if (product == null)
+            throw new NotFoundException();
+        em.remove(product);
     }
 
 

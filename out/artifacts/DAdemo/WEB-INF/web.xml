@@ -18,7 +18,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>*.xhtml</url-pattern>
+        <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <filter>
         <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
@@ -31,17 +31,16 @@
 
     <filter-mapping>
         <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
-        <url-pattern>/productDetail.xhtml/*</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
-
+        <url-pattern>/faces/productDetail.xhtml/*</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
-        <url-pattern>/productDetail.xhtml/*</url-pattern>
+        <url-pattern>/faces/productDetail.xhtml/*</url-pattern>
     </filter-mapping>
 
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
 
 </web-app>

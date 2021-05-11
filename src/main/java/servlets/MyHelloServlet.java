@@ -1,6 +1,6 @@
 package servlets;
 
-import ejb.CommentBean;
+import ejb.GetHits;
 import ejb.DataServicesBean;
 import ejb.ShoppingCartBean;
 import entities.*;
@@ -20,7 +20,7 @@ public class MyHelloServlet extends HttpServlet {
     ShoppingCartBean shoppingCart;
 
     @Inject
-    CommentBean comment;
+    GetHits comment;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class MyHelloServlet extends HttpServlet {
         //writer.println("<p>The result of 15 + 32 ="+ shoppingcart.addCart(dataServicesBean.findByProductId(1))+"</p>");
         //UserEntity user1=dataServices.findUserById(1);
         //ProductEntity product1=dataServices.findByProductId(1);
-         dataServicesBean.createComment(1,2,3,"anlamiyorum");
+        // dataServicesBean.createComment(1,2,3,"anlamiyorum");
        // dataServices.createProduct("Bamboo Watch",237.67,"secondhand",12,Accessories,VERY_GOOD);
 
         request.getParameter("id");

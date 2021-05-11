@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="DAdemo">
-    <output-path>$PROJECT_DIR$/out/artifacts/DAdemo</output-path>
+  <artifact type="exploded-war" name="a20da21">
+    <output-path>$PROJECT_DIR$/out/artifacts/a20da21</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="a20da21/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -15,7 +15,7 @@
         </element>
       </element>
       <element id="javaee-facet-resources" facet="a20da21/ejb/EJB" />
-      <element id="artifact" artifact-name="DAdemo:ejb exploded" />
+      <element id="artifact" artifact-name="a20da21:ejb" />
     </root>
   </artifact>
 </component>

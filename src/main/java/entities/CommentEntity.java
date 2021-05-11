@@ -1,5 +1,6 @@
 package entities;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 
 
@@ -16,6 +17,7 @@ import jakarta.persistence.*;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_id_user")
     private  UserEntity user;
+
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PRODUCT_id_product")
@@ -59,11 +61,12 @@ import jakarta.persistence.*;
     public int getCommentId() {
         return commentId;
     }
-
+    @JsonbTransient
     public UserEntity getUser() {
         return user;
     }
 
+    @JsonbTransient
     public ProductEntity getProduct() {
         return product;
     }

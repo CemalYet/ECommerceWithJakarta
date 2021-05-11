@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 <f:metadata>
-    <f:viewParam name="productId" value="#{productController.product.idProduct}" />
+    <f:viewParam name="productId" value="#{productController.product.idProduct}"/>
     <f:viewAction action="#{productController.doFindProductById}"/>
 </f:metadata>
 <f:view>
@@ -16,10 +16,10 @@
         <h:outputStylesheet name="/css/primeflex.css"/>
     </h:head>
     <h:body>
+        <h1>The number of visited ${getHitsController.visitNumber}</h1>
         <div class="p-grid">
             <div class="p-col-12 p-md-6 p-col">
                 <p:card>
-
                     <div>
                         <i class="pi pi-tag product-category-icon"/>
                         <span>${productController.product.category}</span>

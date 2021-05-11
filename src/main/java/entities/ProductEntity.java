@@ -1,4 +1,5 @@
 package entities;
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
