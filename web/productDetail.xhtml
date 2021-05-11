@@ -5,7 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <f:metadata>
     <f:viewParam name="productId" value="#{productController.product.idProduct}"/>
     <f:viewAction action="#{productController.doFindProductById}"/>
@@ -16,9 +17,9 @@
         <h:outputStylesheet name="/css/primeflex.css"/>
     </h:head>
     <h:body>
-        <h1>The number of visited ${getHitsController.visitNumber}</h1>
-        <div class="p-grid">
-            <div class="p-col">
+        <ui:include id="navBar" src="/navBar.xhtml"/>
+        <div class="p-grid p-d-flex p-jc-center p-m-3">
+            <div class="p-col-6">
                 <p:card>
                     <div>
                         <i class="pi pi-tag product-category-icon"/>
@@ -28,9 +29,9 @@
                     </div>
                     <p:spacer> </p:spacer>
                     <div style="text-align: center;font-size: large">
-                        <div class="card">
-                            <p:galleria value="#{productController.images}" var="image" panelWidth="500"
-                                        panelHeight="313" showCaption="false">
+                        <div style=" display: flex;align-items: center;justify-content: center">
+                            <p:galleria value="#{productController.images}" var="image" panelWidth="380"
+                                        panelHeight="380" showCaption="false">
                                 <img src="#{image.photo}" alt=""/>
                             </p:galleria>
                         </div>
@@ -41,7 +42,7 @@
                     <p:rating style="text-align: center" value="#{productController.product.star}" readonly="true"/>
                     <p:spacer/>
                     <div>
-                        <h:outputText value="#{productController.product.price}"
+                        <h:outputText value="£ #{productController.product.price}"
                                       style="font-size: x-large;font-weight: bold">
                         </h:outputText>
                         <h:form>
@@ -114,9 +115,9 @@
                     </div>
                 </div>
             </div>
-            <div class="p-col">
+            <div class="p-col-5">
                 <p:card id="cart">
-                    <f:facet name="title">Your Shopping Cart</f:facet>
+                    <f:facet name="title"> <i class="pi pi-shopping-cart"/> Your Shopping Cart</f:facet>
                     <p:dataTable var="cart" value="#{shoppingCartController.cart}">
                         <p:column headerText="Name">
                             <h:outputText value="#{cart.name}"/>

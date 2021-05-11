@@ -1,0 +1,26 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:param name="navBar" value=":componentId" />
+    <h:form>
+    <p:menubar>
+        <p:menuitem value="Home" outcome="/index.xhtml" icon="pi pi-fw pi-home"/>
+
+        <f:facet name="options">
+            <p:badge  value="#{(shoppingCartController.sizeString)}" severity="danger">
+            <p:commandButton value="Cart" icon="pi pi-shopping-cart" />
+        </p:badge></f:facet>
+
+        <f:facet name="options">
+            <div class="ui-input-icon-left p-mr-2">
+                <i class="pi pi-fw pi-search" />
+                <p:inputText placeholder="Search"/>
+            </div>
+            <p:commandButton value="Logout" action="#{loginController.logout}" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+        </f:facet>
+    </p:menubar>
+    </h:form>
+</ui:composition>

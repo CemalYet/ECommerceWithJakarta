@@ -55,4 +55,8 @@ public class ShoppingCartController implements Serializable {
         return cart;
     }
 
+    public String getSizeString(){
+        return String.valueOf(cart.size());
+    }
+
 }
