@@ -27,6 +27,7 @@ public class ShoppingCartController implements Serializable {
     public void initialize() {
         cart=cartBean.getShoppingCart();
     }
+
     public void addCart(ProductEntity product) {
         if (!cartBean.addProduct(product)){
             FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -38,6 +39,19 @@ public class ShoppingCartController implements Serializable {
         PrimeFaces.current().ajax().update("messages");
 
     }
+
+    public void deleteProduct(ProductEntity product){
+        if (!cartBean.removeProduct(product)){
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "War", "The product is not in the list"));
+        }else{
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,
+                    "Info", "The product is removed from the list"));
+        }
+        PrimeFaces.current().ajax().update("messages");
+
+    }
+
 
     public void removeProduct(ProductEntity product){
         cartBean.removeProduct(product);

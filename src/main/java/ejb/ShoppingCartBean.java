@@ -4,6 +4,8 @@ import entities.ProductEntity;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Remove;
 import jakarta.ejb.Stateful;
+import jakarta.interceptor.Interceptors;
+import jakarta.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ public class ShoppingCartBean {
         shoppingCart = new ArrayList<>();
     }
 
+    @Interceptors(CartInterceptor.class)
     public boolean addProduct(ProductEntity product) {
         if (!shoppingCart.contains(product)) {
             shoppingCart.add(product);
@@ -25,9 +28,13 @@ public class ShoppingCartBean {
         return false;
     }
 
-    public List<ProductEntity> removeProduct(ProductEntity product) {
-        shoppingCart.remove(product);
-        return shoppingCart;
+    @Interceptors(CartInterceptor.class)
+    public boolean  removeProduct(ProductEntity product) {
+        if (shoppingCart.contains(product)) {
+            shoppingCart.remove(product);
+            return true;
+        }
+        return false;
     }
 
     public Integer getCartSize() {

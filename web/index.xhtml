@@ -18,6 +18,11 @@
 <h:head>
     <title>Title</title>
     <h:outputStylesheet name="css/primeflex.css"/>
+    <style>
+        .ui-dataview-header{
+            display:none;
+        }
+    </style>
 </h:head>
 <h:body>
     <ui:include  src="/navBar.xhtml" />
@@ -25,7 +30,7 @@
         <h:form id="form">
             <p:dataView id="productList" var="product" value="#{productController.products}" rows="12" paginator="true"
                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                        layout="grid" gridRowStyleClass="p-lg-6 p-xl-4"
+                        layout="grid" gridRowStyleClass="p-lg-6 p-xl-4"  gridIcon="pi pi-th-large"
             >
                 <p:dataViewGridItem>
                     <p:card>
@@ -34,6 +39,8 @@
                             <span>${product.category}</span>
                             <p:staticMessage severity="info" summary="In Stock"
                                              style="width: 30%; float: right; margin-top: 0"/>
+                            <p:spacer/>
+                            <p:spacer/>
                             <p:spacer/>
                         </div>
                         <div class="p-m-5" style="text-align: center;font-size: large">
@@ -59,6 +66,5 @@
     <div style="text-align: center">
         <h2>This page is viewed ${getHitsController.visitNumber} times</h2>
     </div>
-
 </h:body>
 </html>

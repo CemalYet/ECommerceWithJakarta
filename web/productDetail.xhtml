@@ -5,8 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <f:metadata>
     <f:viewParam name="productId" value="#{productController.product.idProduct}"/>
     <f:viewAction action="#{productController.doFindProductById}"/>
@@ -17,7 +16,24 @@
         <h:outputStylesheet name="/css/primeflex.css"/>
     </h:head>
     <h:body>
-        <ui:include id="navBar" src="/navBar.xhtml"/>
+        <h:form id="siteNav">
+            <p:menubar>
+                <p:menuitem value="Home" outcome="/index.xhtml" icon="pi pi-fw pi-home"/>
+
+                <f:facet name="options">
+                    <p:badge  value="#{(shoppingCartController.sizeString)}" severity="danger">
+                        <p:commandButton value="Cart" icon="pi pi-shopping-cart" />
+                    </p:badge></f:facet>
+
+                <f:facet name="options">
+                    <div class="ui-input-icon-left p-mr-2">
+                        <i class="pi pi-fw pi-search" />
+                        <p:inputText placeholder="Search"/>
+                    </div>
+                    <p:commandButton value="Logout" action="#{loginController.logout}" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+                </f:facet>
+            </p:menubar>
+        </h:form>
         <div class="p-grid p-d-flex p-jc-center p-m-3">
             <div class="p-col-6">
                 <p:card>
@@ -58,7 +74,7 @@
                                     value="Add To Cart"
                                     action="#{shoppingCartController.addCart(productController.product)}"
                                     style="float: right"
-                                    update="cart"
+                                    update="cart siteNav"
                                     icon="pi pi-shopping-cart"
                                     disabled="#{productController.product.stock == 0}">
                                 <f:param name="productId" value="#{productController.product.idProduct}"/>
@@ -127,6 +143,11 @@
                         </p:column>
                         <p:column headerText="Price">
                             <h:outputText value="#{cart.price}"/>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash" update="cart siteNav" process="@this"
+                                             action="#{shoppingCartController.removeProduct(cart)}">
+                            </p:commandButton>
                         </p:column>
                     </p:dataTable>
                     <p id="total"><b>Total Price : $${shoppingCartController.total}</b></p>
