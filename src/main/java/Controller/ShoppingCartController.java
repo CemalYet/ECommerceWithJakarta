@@ -73,4 +73,8 @@ public class ShoppingCartController implements Serializable {
         return String.valueOf(cart.size());
     }
 
+    public void checkout (){
+        cartBean.checkout();
+    }
+
 }

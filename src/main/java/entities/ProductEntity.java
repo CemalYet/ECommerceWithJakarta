@@ -2,12 +2,16 @@ package entities;
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQuery(name = "findAllProduct",
         query = "SELECT p from ProductEntity p ")
 @Entity

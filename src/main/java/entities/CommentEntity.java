@@ -2,6 +2,7 @@ package entities;
 
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 
 @Entity
@@ -62,11 +63,13 @@ import jakarta.persistence.*;
         return commentId;
     }
     @JsonbTransient
+    @XmlTransient
     public UserEntity getUser() {
         return user;
     }
 
     @JsonbTransient
+    @XmlTransient
     public ProductEntity getProduct() {
         return product;
     }
