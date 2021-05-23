@@ -26,7 +26,7 @@ public class OrderMessageBean implements MessageListener {
 
         try{
             TextMessage msg = (TextMessage) message;
-            System.out.println(msg.getText()+" -----> IS LOGGED IN "+new Date());
+            System.out.println(msg.getText()+" in "+new Date());
         } catch (JMSException e) {
             Logger.getLogger(OrderMessageBean.class.getName()).log(Level.SEVERE,null,e);
         }

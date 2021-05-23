@@ -4,6 +4,7 @@ import entities.ProductEntity;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Remove;
 import jakarta.ejb.Stateful;
+import jakarta.inject.Inject;
 import jakarta.interceptor.Interceptors;
 import jakarta.transaction.Transactional;
 
@@ -13,6 +14,8 @@ import java.util.List;
 @Stateful
 public class ShoppingCartBean {
     private List<ProductEntity> shoppingCart;
+    @Inject
+    MessageProducerBean messageProducerBean;
 
     @PostConstruct
     public void init() {
@@ -23,6 +26,10 @@ public class ShoppingCartBean {
     public boolean addProduct(ProductEntity product) {
         if (!shoppingCart.contains(product)) {
             shoppingCart.add(product);
+            if(product.getOrderQuantity()>5){
+                String message=product.getOrderQuantity() +" "+ product.getName()+" is ordered";
+                messageProducerBean.sendJMSMessageToOrderDest(message);
+            }
             return true;
         }
         return false;
@@ -36,6 +43,8 @@ public class ShoppingCartBean {
         }
         return false;
     }
+
+
 
     public Integer getCartSize() {
         if (shoppingCart == null || shoppingCart.isEmpty()) {

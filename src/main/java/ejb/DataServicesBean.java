@@ -3,15 +3,10 @@ package ejb;
 import entities.*;
 import jakarta.ejb.Schedule;
 import jakarta.ejb.Stateless;
-import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
-
-import javax.crypto.SecretKeyFactory;
-import java.util.Date;
 import java.util.List;
 
 
@@ -102,7 +97,7 @@ public class DataServicesBean {
     @Schedule(dayOfWeek="Wed", hour = "8", minute = "30")
     public void cargoFree(){
         System.out.println("Dear customer we have happy news for you today :" +
-                " all your shopping that cost more than 20 euros are cargo free today until midnight. ");
+                " all your shopping that cost more than 20 euros are cargo free  until midnight. ");
     }
 
 
