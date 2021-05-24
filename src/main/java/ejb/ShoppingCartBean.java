@@ -27,6 +27,7 @@ public class ShoppingCartBean {
         if (!shoppingCart.contains(product)) {
             shoppingCart.add(product);
             if(product.getOrderQuantity()>5){
+                //send message if the order is grater than 5
                 String message=product.getOrderQuantity() +" "+ product.getName()+" is ordered";
                 messageProducerBean.sendJMSMessageToOrderDest(message);
             }
