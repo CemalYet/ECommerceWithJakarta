@@ -1,5 +1,6 @@
 package soapClient.Client;
 
+
 import soapClient.ClientService.ProductEntity;
 import soapClient.ClientService.ProductSoap;
 import soapClient.ClientService.ProductSoapService;
