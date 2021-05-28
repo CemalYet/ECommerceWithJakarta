@@ -2,8 +2,6 @@ package Controller;
 
 
 import ejb.GetHits;
-import entities.CommentEntity;
-import entities.ProductEntity;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;

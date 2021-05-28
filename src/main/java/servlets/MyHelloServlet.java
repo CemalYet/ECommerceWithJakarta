@@ -12,6 +12,8 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import static entities.CategoryEnum.Fitness;
+
 @WebServlet(name = "MyHelloServlet", urlPatterns = "/hello")
 public class MyHelloServlet extends HttpServlet {
     @Inject
@@ -33,7 +35,7 @@ public class MyHelloServlet extends HttpServlet {
         writer.println("<html><head><title>DA demo</title></head>\n<body>");
         writer.println("<h1>Hello</h1>");
         writer.println("<p>The result of 15 + 32 ="+ dataServicesBean.findUserById(1)+"</p>");
-
+        dataServicesBean.createProduct("Jsonproduct",123.45,"Trying Json product",5,Fitness,2);
 
 
         //writer.println("<p>The result of 15 + 32 ="+ shoppingcart.addCart(dataServicesBean.findByProductId(1))+"</p>");

@@ -20,17 +20,9 @@ public class DataServicesBean {
     public DataServicesBean() {
     }
 
-    public void createProduct(ProductEntity product){
-        product = new ProductEntity();
-        em.persist(product);
-    }
-
-
-
     @Transactional
     public UserEntity createUserByFields(String name, String email, String password, String surname, String street,
                                  String city, int zipcode) {
-
         UserEntity newUser = new UserEntity(name, surname, email,password);
         AdressEntity newAddress = new AdressEntity(street, city, zipcode);
         newUser.setAddress(newAddress);
@@ -38,6 +30,10 @@ public class DataServicesBean {
         em.persist(newUser);
         em.flush();
         return newUser;
+    }
+    @Transactional
+    public void createProduct(ProductEntity product){
+        em.persist(product);
     }
 
     @Transactional

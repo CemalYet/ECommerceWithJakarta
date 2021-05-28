@@ -29,11 +29,11 @@ public class ProductSoap {
     public void createProduct(@WebParam(name = "Product") ProductEntity product) {
         this.dataServicesBean.createProduct(product);
     }
-
+    @WebMethod
     public ProductEntity getProduct(@WebParam(name = "ProductId") int productId) {
         return this.dataServicesBean.findByProductId(productId);
     }
-
+    @WebMethod
     public void deleteProduct(@WebParam(name = "ProductId") int productId) {
         this.dataServicesBean.deleteProductId(productId);
     }

@@ -1,4 +1,5 @@
 package entities;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
@@ -16,6 +17,7 @@ import java.util.Objects;
         query = "SELECT p from ProductEntity p ")
 @Entity
 @Table(name="product")
+@JsonIgnoreProperties({ "commentSize"})
 public class ProductEntity {
 
     @Id

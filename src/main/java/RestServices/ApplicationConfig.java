@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-@ApplicationPath("restfulClient")
+@ApplicationPath("rest")
 public class ApplicationConfig extends Application {
     private final Set<Class<?>> classes;
     public ApplicationConfig() { HashSet<Class<?>> c = new HashSet<>(); c.add(ProductRest.class);

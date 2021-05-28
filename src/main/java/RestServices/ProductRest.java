@@ -24,22 +24,29 @@ public class ProductRest {
     @Context
     private UriInfo uriInfo;
 
-  @POST
-    public Response createProduct(ProductEntity product){
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createProduct(ProductEntity product) {
         if (product == null)
             throw new BadRequestException();
         dataServicesBean.createProduct(product);
-        URI productUri=uriInfo.getAbsolutePathBuilder().path(String.valueOf(product.getIdProduct())).build();
-        return Response.created(productUri).build();
-
+        URI productUri = uriInfo
+                .getAbsolutePathBuilder()
+                .path(String.valueOf(product.getIdProduct()))
+                .build();
+        return Response
+                .created(productUri)
+                .build();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getProduct(@PathParam("id") int productId){
-      ProductEntity product=dataServicesBean.findByProductId(productId);
-      return Response.ok(product).build();
+    public Response getProduct(@PathParam("id") int productId) {
+        ProductEntity product = dataServicesBean.findByProductId(productId);
+        return Response
+                .ok(product)
+                .build();
     }
 
     @GET
@@ -47,14 +54,18 @@ public class ProductRest {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllProduct() {
         List<ProductEntity> products;
-        products=dataServicesBean.findAllProduct();
-        return Response.ok(products).build();
+        products = dataServicesBean.findAllProduct();
+        return Response
+                .ok(products)
+                .build();
     }
 
     @DELETE
     @Path("{id}")
-    public Response deleteProduct(int productId) {
+    public Response deleteProduct(@PathParam("id") int productId) {
         dataServicesBean.deleteProductId(productId);
-        return Response.noContent().build();
+        return Response
+                .ok()
+                .build();
     }
 }
