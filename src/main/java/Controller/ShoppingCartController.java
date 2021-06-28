@@ -12,6 +12,7 @@ import jakarta.inject.Named;
 import org.primefaces.PrimeFaces;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Named
@@ -52,7 +53,6 @@ public class ShoppingCartController implements Serializable {
 
     }
 
-
     public void removeProduct(ProductEntity product){
         cartBean.removeProduct(product);
     }
@@ -61,8 +61,9 @@ public class ShoppingCartController implements Serializable {
         cartBean.empty();
     }
 
-    public Double getTotal(){
-        return cartBean.getTotal();
+    public String getTotal(){
+        DecimalFormat df = new DecimalFormat("0.##");
+        return df.format(cartBean.getTotal());
     }
 
     public List<ProductEntity> getCart() {

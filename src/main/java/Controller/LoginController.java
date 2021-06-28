@@ -41,7 +41,7 @@ public class LoginController {
     }
 
     public String login() {
-        this.currentUser = dataServicesBean.getUserByNameAndPassword(currentUser.getName(), currentUser.getPassword());
+        this.currentUser = dataServicesBean.getUserByNameAndPassword(currentUser.getName(), dataServicesBean.passwordHash(currentUser.getPassword()));
         FacesContext context = FacesContext.getCurrentInstance();
         if (currentUser == null) {
             //currentUser = new UserEntity();

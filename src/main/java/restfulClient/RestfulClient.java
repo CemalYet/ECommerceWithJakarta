@@ -24,8 +24,8 @@ public class RestfulClient {
 
 
     public static void main(String[] args) {
-        //createProduct("Jsonproduct",123.45,"Trying Json product",5,Fitness,2);
-        deleteProduct(121);
+       // createProduct("Jsonproduct",123.45,"Trying Json product",5,Fitness,2);
+       // deleteProduct(127);
         productList();
         getProduct(5);
         getProduct(3);

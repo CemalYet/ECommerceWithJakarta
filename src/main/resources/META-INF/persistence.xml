@@ -14,9 +14,6 @@
         <class>entities.ProductPhotoEntity</class>
         <class>entities.CategoryEnum</class>
 
-
-
-
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/a20da21"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

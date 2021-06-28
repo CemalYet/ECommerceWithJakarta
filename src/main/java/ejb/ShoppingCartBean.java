@@ -6,7 +6,7 @@ import jakarta.ejb.Remove;
 import jakarta.ejb.Stateful;
 import jakarta.inject.Inject;
 import jakarta.interceptor.Interceptors;
-import jakarta.transaction.Transactional;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,6 @@ public class ShoppingCartBean {
     private List<ProductEntity> shoppingCart;
     @Inject
     MessageProducerBean messageProducerBean;
-
     @PostConstruct
     public void init() {
         shoppingCart = new ArrayList<>();

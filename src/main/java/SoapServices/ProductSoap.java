@@ -15,9 +15,11 @@ import jakarta.jws.soap.SOAPBinding.Use;
         serviceName = "ProductSoapService"
 )
 @SOAPBinding(
+        //The SOAP message contains the parameters and the return values
         style = Style.RPC,
         use = Use.LITERAL
 )
+//wsimport was used to create soapClient  
 public class ProductSoap {
     @Inject
     DataServicesBean dataServicesBean;
